@@ -13,22 +13,27 @@ const renderWord = chosen => word => {
   return (
     <tr key={word.id} className={mapOkToClassName(word.ok)}>
     <td>{word.text}</td>
-    <td onClick={() => chosen(word.id, 'der')}>der</td>
-    <td onClick={() => chosen(word.id, 'die')}>die</td>
-    <td onClick={() => chosen(word.id, 'das')}>das</td>
+    <td className="Words-article" onClick={() => chosen(word.id, 'der')}>der</td>
+    <td className="Words-article" onClick={() => chosen(word.id, 'die')}>die</td>
+    <td className="Words-article" onClick={() => chosen(word.id, 'das')}>das</td>
     </tr>
   )
 }
 
 const App = ({words, chosen}) => (
   <div className="App">
-    <div className="App-header">
-      <h2>German endings trainer</h2>
+    <h2 className="App-header">German endings trainer</h2>
+    <div className="Content">
+      <table className="Words"><tbody>
+      <tr>
+        <th>Word</th>
+        <th>der</th>
+        <th>die</th>
+        <th>das</th>
+      </tr>
+      { words.map(renderWord(chosen)) }
+      </tbody></table>
     </div>
-    <table className="Words"><tbody>
-    <tr><th>Word</th><th>der</th><th>die</th><th>das</th></tr>
-    { words.map(renderWord(chosen)) }
-    </tbody></table>
   </div>
 )
 

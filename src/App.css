@@ -2,15 +2,35 @@
 }
 
 .App-header {
-  background-color: #222;
+  margin: 0px;
   padding: 20px;
+  background-color: #222;
   text-align: center;
   color: white;
 }
 
+.Content {
+  padding: 20px;
+}
+
+.Words {
+  border-collapse: collapse;
+}
+.Words tr {
+}
+.Words td {
+  padding: 5px 10px;
+}
+.Words-article {
+  cursor: pointer;
+}
+.Words-article:hover {
+  background-color: #aaa;
+}
+
 .Words-word.is-right {
-  color: green;
+  background-color: green;
 }
 .Words-word.is-wrong {
-  color: red;
+  background-color: #c00;
 }

@@ -11,6 +11,7 @@ words.reduce((acc, word) => ((word.id = acc++, acc)), 0)
 
 function chosen (id, article) {
   const word = words[id]
+  word.chosen = article
   word.ok = word.article == article
   render(words)
 }

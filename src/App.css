@@ -28,9 +28,11 @@
   background-color: #aaa;
 }
 
-.Words-word.is-right {
+.Words-word.is-right .Words-article.is-chosen {
   background-color: green;
+  color: #fff;
 }
-.Words-word.is-wrong {
+.Words-word.is-wrong .Words-article.is-chosen {
   background-color: #c00;
+  color: #fff;
 }

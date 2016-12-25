@@ -10,13 +10,20 @@ function mapOkToClassName (ok) {
   return ''
 }
 
+function chosenClass (chosen, article) {
+  if (chosen == article)
+    return 'Words-article is-chosen'
+  else
+    return 'Words-article'
+}
+
 const renderWord = chosen => word => {
   return (
     <tr key={word.id} className={mapOkToClassName(word.ok)}>
     <td>{word.text}</td>
-    <td className="Words-article" onClick={() => chosen(word.id, 'der')}>der</td>
-    <td className="Words-article" onClick={() => chosen(word.id, 'die')}>die</td>
-    <td className="Words-article" onClick={() => chosen(word.id, 'das')}>das</td>
+    <td className={chosenClass(word.chosen, 'der')} onClick={() => chosen(word.id, 'der')}>der</td>
+    <td className={chosenClass(word.chosen, 'die')} onClick={() => chosen(word.id, 'die')}>die</td>
+    <td className={chosenClass(word.chosen, 'das')} onClick={() => chosen(word.id, 'das')}>das</td>
     </tr>
   )
 }

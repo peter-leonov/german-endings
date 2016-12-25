@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+
 function mapOkToClassName (ok) {
   if (ok === true)
     return 'Words-word is-right'

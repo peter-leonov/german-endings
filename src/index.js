@@ -18,8 +18,9 @@ function chosen (id, article) {
 render(words)
 
 function render (words) {
+  const state = {words}
   ReactDOM.render(
-    <App words={words} chosen={chosen} />,
+    <App state={state} chosen={chosen} />,
     document.getElementById('root')
   )
 }

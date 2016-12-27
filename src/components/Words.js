@@ -16,13 +16,13 @@ function chosenClass (chosen, article) {
     return 'Words-article'
 }
 
-const renderWord = chosen => word => {
+const renderWord = onChosen => word => {
   return (
     <tr key={word.id} className={mapOkToClassName(word.ok)}>
     <td>{word.text}</td>
-    <td className={chosenClass(word.chosen, 'der')} onClick={() => chosen(word.id, 'der')}>der</td>
-    <td className={chosenClass(word.chosen, 'die')} onClick={() => chosen(word.id, 'die')}>die</td>
-    <td className={chosenClass(word.chosen, 'das')} onClick={() => chosen(word.id, 'das')}>das</td>
+    <td className={chosenClass(word.chosen, 'der')} onClick={onChosen({id: word.id, article: 'der'})}>der</td>
+    <td className={chosenClass(word.chosen, 'die')} onClick={onChosen({id: word.id, article: 'die'})}>die</td>
+    <td className={chosenClass(word.chosen, 'das')} onClick={onChosen({id: word.id, article: 'das'})}>das</td>
     </tr>
   )
 }
@@ -31,7 +31,7 @@ const renderWord = chosen => word => {
 // 2. штук по двадцать
 // 3. галочка для выделения окончаний
 
-export const Words = ({words, chosen}) => (
+export const Words = ({onChosen, words}) => (
   <table className="Words"><tbody>
   <tr>
     <th>Word</th>
@@ -39,6 +39,6 @@ export const Words = ({words, chosen}) => (
     <th>die</th>
     <th>das</th>
   </tr>
-  { words.map(renderWord(chosen)) }
+  { words.map(renderWord(onChosen)) }
   </tbody></table>
 )

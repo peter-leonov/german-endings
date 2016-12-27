@@ -1,26 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
 import App from './components/App'
 import './index.css'
+import reducer from './reducers'
 
-import words from './words.json'
+const store = createStore(reducer)
+const dispatch = type => payload => () => store.dispatch({type, payload})
+const rootEl = document.getElementById('root')
 
-words.sort(() => Math.random() > 0.5)
+const render = () => ReactDOM.render(
+  <App state={store.getState()} dispatch={dispatch} />,
+  rootEl
+)
 
-words.reduce((acc, word) => ((word.id = acc++, acc)), 0)
-
-function chosen (id, article) {
-  const word = words[id]
-  word.chosen = article
-  word.ok = word.article == article
-  render(words)
-}
-render(words)
-
-function render (words) {
-  const state = {words}
-  ReactDOM.render(
-    <App state={state} chosen={chosen} />,
-    document.getElementById('root')
-  )
-}
+render()
+store.subscribe(render)

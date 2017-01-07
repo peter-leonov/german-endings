@@ -3,11 +3,11 @@ import { ARTICLE_CHOSEN } from '../actions'
 import { Words } from './Words';
 import './App.css';
 
-const App = ({groups, dispatch}) => (
+const App = ({model, dispatch}) => (
   <div className="App">
     <h2 className="App-header">German grammar A1 trainer</h2>
     <div className="Content">
-    <Words groups={groups} onChosen={dispatch(ARTICLE_CHOSEN)}/>
+    <Words groups={model.groups} onChosen={dispatch(ARTICLE_CHOSEN)}/>
     </div>
   </div>
 )

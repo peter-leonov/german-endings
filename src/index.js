@@ -9,14 +9,14 @@ import reducer from './reducers'
 const store = createStore(reducer)
 const dispatch = type => payload => () => store.dispatch({type, payload})
 const rootEl = document.getElementById('root')
-const stateToViewModel = words => {
-  const groups = map(sortBy(prop('random')), splitEvery(20, words))
-  groups.forEach((group, i) => group.id = i)
-  return groups
+const stateToViewModel = ({words, endings}) => {
+  const sortedGroups = map(sortBy(prop('random')), splitEvery(20, words))
+  sortedGroups.forEach((group, i) => group.id = i)
+  return {groups: sortedGroups, endings}
 }
 
 const render = () => ReactDOM.render(
-  <App groups={stateToViewModel(store.getState())} dispatch={dispatch} />,
+  <App model={stateToViewModel(store.getState())} dispatch={dispatch} />,
   rootEl
 )
 

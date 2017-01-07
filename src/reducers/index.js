@@ -1,5 +1,6 @@
 import { ARTICLE_CHOSEN } from '../actions'
 import words from './words.json'
+import endings from './endings.json'
 
 words.sort(() => Math.random() > 0.5)
 words.reduce((acc, word) => {
@@ -16,10 +17,10 @@ const articleChosen = (state, {id, article}) => (
   ))
 )
 
-export default (state = words, {type, payload}) => {
+export default (state = {words, endings}, {type, payload}) => {
   switch (type) {
     case ARTICLE_CHOSEN:
-      return articleChosen(state, payload)
+      return {...state, words: articleChosen(state.words, payload)}
     default:
       return state
   }

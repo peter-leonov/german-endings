@@ -2,7 +2,11 @@ import { ARTICLE_CHOSEN } from '../actions'
 import words from './words.json'
 
 words.sort(() => Math.random() > 0.5)
-words.reduce((acc, word) => ((word.id = acc++, acc)), 0)
+words.reduce((acc, word) => {
+  word.id = acc++
+  word.random = Math.random()
+  return acc
+}, 0)
 
 const articleChosen = (state, {id, article}) => (
   state.map(word => (

@@ -28,17 +28,22 @@ const renderWord = onChosen => word => {
 }
 
 // 1. окончания
-// 2. штук по двадцать
 // 3. галочка для выделения окончаний
 
-export const Words = ({onChosen, words}) => (
-  <table className="Words"><tbody>
+export const Words = ({onChosen, groups}) => (
+  <table className="Words">
+  <thead>
   <tr>
     <th>Word</th>
     <th>der</th>
     <th>die</th>
     <th>das</th>
   </tr>
-  { words.map(renderWord(onChosen)) }
-  </tbody></table>
+  </thead>
+  {groups.map(group =>
+    <tbody key={group.id}>
+    { group.map(renderWord(onChosen)) }
+    </tbody>
+  )}
+  </table>
 )

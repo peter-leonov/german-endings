@@ -1,8 +1,17 @@
 .Words {
   border-collapse: collapse;
 }
+.Words tbody::after {
+  content: '';
+  display: block;
+  height: 50px;
+}
+.Words th {
+  text-align: left;
+}
 .Words tr {
 }
+.Words th,
 .Words td {
   padding: 5px 10px;
 }

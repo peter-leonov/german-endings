@@ -42,7 +42,7 @@ export const Words = ({onChosen, groups}) => (
   </thead>
   {groups.map(group =>
     <tbody key={group.id}>
-    { group.map(renderWord(onChosen)) }
+    { group.words.map(renderWord(onChosen)) }
     </tbody>
   )}
   </table>

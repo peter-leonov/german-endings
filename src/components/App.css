@@ -12,27 +12,3 @@
 .Content {
   padding: 20px;
 }
-
-.Words {
-  border-collapse: collapse;
-}
-.Words tr {
-}
-.Words td {
-  padding: 5px 10px;
-}
-.Words-article {
-  cursor: pointer;
-}
-.Words-article:hover {
-  background-color: #aaa;
-}
-
-.Words-word.is-right .Words-article.is-chosen {
-  background-color: green;
-  color: #fff;
-}
-.Words-word.is-wrong .Words-article.is-chosen {
-  background-color: #c00;
-  color: #fff;
-}

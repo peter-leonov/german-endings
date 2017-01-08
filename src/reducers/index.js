@@ -1,4 +1,5 @@
 import { groupBy, prop, any } from 'ramda'
+import md5 from 'js-md5'
 import { endsWith } from '../lib/endsWith'
 import { ARTICLE_CHOSEN } from '../actions'
 import srcWords from './words.json'
@@ -8,7 +9,7 @@ const byArticle = groupBy(prop('article'), endings)
 
 const words = srcWords.filter(word => any(ending => endsWith(word.text, ending.text), byArticle[word.article]))
 
-words.sort(() => Math.random() > 0.5)
+words.sort(word => md5(word.text))
 words.reduce((acc, word) => {
   word.id = acc++
   word.random = Math.random()

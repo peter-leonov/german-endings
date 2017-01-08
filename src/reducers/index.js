@@ -1,6 +1,12 @@
+import { groupBy, prop, any } from 'ramda'
+import { endsWith } from '../lib/endsWith'
 import { ARTICLE_CHOSEN } from '../actions'
-import words from './words.json'
+import srcWords from './words.json'
 import endings from './endings.json'
+
+const byArticle = groupBy(prop('article'), endings)
+
+const words = srcWords.filter(word => any(ending => endsWith(word.text, ending.text), byArticle[word.article]))
 
 words.sort(() => Math.random() > 0.5)
 words.reduce((acc, word) => {
